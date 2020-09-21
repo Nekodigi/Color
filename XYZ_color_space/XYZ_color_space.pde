@@ -2,8 +2,8 @@ float step = 0.002;
 float mult = 5.5;
 
 void setup(){
-  fullScreen();
-  //size(500, 500);
+  //fullScreen();
+  size(500, 500);
   colorMode(RGB, 1, 1, 1);
   background(1);
   strokeWeight(10);
