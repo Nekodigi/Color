@@ -12,7 +12,8 @@ void setup(){
   noStroke();
   for(float x = -1; x < 1; x+=step){
     for(float y = -1; y < 1; y+=step){
-        PVector xyz = CIELabtoXYZ(new PVector(0.5*100, map(x, -1, 1, -86.185, 98.254), map(y, -1, 1, -107.863, 94.482)));
+        PVector xyz = CIELabtoXYZ(new PVector(0.5*100, map(x, -1, 1, -86.185, 98.254), map(y, -1, 1, -107.863, 94.482)));//https://stackoverflow.com/questions/19099063/what-are-the-ranges-of-coordinates-in-the-cielab-color-space
+        //PVector xyz = CIELabtoXYZ(new PVector(0.5*100, x*500, y*100));
         PVector rgb = XYZtoCIERGB(xyz);//println(xyz.x,xyz.y,xyz.z);
         fill(rgb.x*mult, rgb.y*mult, rgb.z*mult);
         //if(rgb.x > 0 && rgb.x < 1 && rgb.y > 0 && rgb.y < 1 && rgb.z > 0 && rgb.z < 1){
@@ -83,7 +84,7 @@ PVector xyYtoXYZ(PVector XY){
   return new PVector(x, XY.z, z);
 }
 
-PVector CIELabtoXYZ(PVector Lab){
+PVector CIELabtoXYZ(PVector Lab){//based on this site http://www.easyrgb.com/en/math.php#text8
   float Y = ( Lab.x + 16 ) / 116;
   float X = Lab.y / 500 + Y;
   float Z = Y - Lab.z / 200;
